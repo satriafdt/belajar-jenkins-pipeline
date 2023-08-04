@@ -4,7 +4,7 @@ pipeline {
             label "linux && java11"
         }
     }
-    
+
     stages {
         stage("Build") {
             steps {
@@ -15,6 +15,7 @@ pipeline {
         stage("Test") {
             steps {
                 echo("Hello Test")
+                sh("error")
             }
         }
 
@@ -36,7 +37,7 @@ pipeline {
             echo "Oh no, failure"
         }
         cleanup {
-            echo "Don' care success or error"
+            echo "Don't care success or error"
         }
     }
 }
