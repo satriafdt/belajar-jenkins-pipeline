@@ -1,5 +1,5 @@
 pipeline {
-    agent{
+    agent {
         node {
             label "linux && java11"
         }
@@ -11,4 +11,20 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            echo "I will always say Hello again!"
+        }
+        success {
+            echo "Yay, success"
+        }
+        failure {
+            echo "Oh no, failure"
+        }
+        cleanup {
+            echo "Don' care success or error"
+        }
+    }
 }
+
