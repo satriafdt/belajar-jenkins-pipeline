@@ -7,6 +7,12 @@ pipeline {
         WEB = "https://www.finanditech.com"
     }
 
+    triggers {
+        cron("*/5 * * * *")
+        // pollSCM("*/5 * * * *")
+        // upstream(upstreamProjects: 'job1,job2', threshold: hudson.model.Result.SUCCESS)
+    }
+
     parameters {
         string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
         text(name: "DESCRIPTION", defaultValue: "Guest", description: "Tell me about you")
