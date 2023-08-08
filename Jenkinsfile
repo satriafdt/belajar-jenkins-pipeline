@@ -7,11 +7,11 @@ pipeline {
         WEB = "https://www.finanditech.com"
     }
 
-    triggers {
-        cron("*/5 * * * *")
-        // pollSCM("*/5 * * * *")
-        // upstream(upstreamProjects: 'job1,job2', threshold: hudson.model.Result.SUCCESS)
-    }
+    // triggers {
+    //     cron("*/5 * * * *")
+    //     // pollSCM("*/5 * * * *")
+    //     // upstream(upstreamProjects: 'job1,job2', threshold: hudson.model.Result.SUCCESS)
+    // }
 
     parameters {
         string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
@@ -107,16 +107,21 @@ pipeline {
         }
 
         stage("Deploy") {
+            input {
+                message "Can we deploy?"
+                ok "Yes, of course"
+                submitter "satriafdt"
+                parameters {
+                    choice(name: "TARGET_ENV", choices: ['DEV','QA','PROD'], description: "Which Environtment?")
+                }
+            }
             agent {
                 node {
                     label "linux && java11"
                 }
             }
             steps {
-                echo("Hello Deploy 1")
-                sleep(5)
-                echo("Hello Deploy 2")
-                echo("Hello Deploy 3")
+                echo("Deploy to ${TARGET_ENV}")
             }
         }
     }
