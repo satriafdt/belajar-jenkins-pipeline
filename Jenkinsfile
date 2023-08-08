@@ -33,6 +33,7 @@ pipeline {
                 echo "Your social media is ${params.SOCIAL_MEDIA}"
                 echo "Need to deploy : ${params.DEPLOY} to deploy!"
                 echo "Your secret is : ${params.SECRET}"
+            }
         }
 
         stage("Prepare") {
