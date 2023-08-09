@@ -48,7 +48,7 @@ pipeline {
                             }
                         }
                         steps {
-                            echo("Setup ${0S} ${ARC}")
+                            echo("Setup ${OS} ${ARC}")
                         }
                     }
                 }
