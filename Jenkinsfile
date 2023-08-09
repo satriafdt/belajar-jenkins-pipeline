@@ -36,12 +36,14 @@ pipeline {
             stages {
                 stage("Prepare Jave") {
                     steps {
-                        echo("Prepare Jave")
+                        echo("Prepare Java")
+                        sleep(5)
                     }
                 }
                 stage("Prepare Maven") {
                     steps {
                         echo("Prepare Maven")
+                        sleep(5)
                     }
                 }
             }
